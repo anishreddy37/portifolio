@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Dark Theme Base - Deep, rich background */
+  --background: 224 71% 4%;    /* #030712 - Rich dark blue/black */
+  --foreground: 210 40% 98%;   /* #f8fafc */
+
+  /* Primary - Vibrant Indigo/Purple Gradient Feel */
+  --primary: 250 100% 70%;     /* #818cf8 - Soft Indigo */
+  --primary-foreground: 210 40% 98%;
+
+  /* Secondary - Muted slate for cards */
+  --card: 222 47% 11%;         /* #0f172a */
+  --card-foreground: 210 40% 98%;
+
+  /* Accents */
+  --muted: 217 33% 17%;        /* #1e293b */
+  --muted-foreground: 215 20% 65%; /* #94a3b8 */
+  
+  --accent: 250 100% 70%;      /* Matching primary for glows */
+  --accent-foreground: 210 40% 98%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 217 33% 17%;
+  --input: 217 33% 17%;
+  --ring: 250 100% 70%;
+
+  --radius: 0.75rem;
+
+  /* Fonts */
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground;
+    font-family: var(--font-body);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-tight font-bold;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-primary to-purple-400;
+  }
+  
+  .glass-nav {
+    @apply bg-background/70 backdrop-blur-md border-b border-white/5;
+  }
+
+  .glass-card {
+    @apply bg-card/50 backdrop-blur-sm border border-white/5 hover:border-primary/50 transition-colors duration-300;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
